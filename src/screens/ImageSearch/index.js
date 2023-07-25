@@ -9,13 +9,12 @@ import {
   Keyboard,
 } from 'react-native';
 import axios from 'axios';
-import {SearchBar} from '@rneui/themed';
+import {SearchBar, Icon} from '@rneui/base';
 import FastImage from 'react-native-fast-image';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from './styles';
 import {colors} from '../../Themes/colors';
-import {Icon} from '@rneui/base';
 import {appConfig} from '../../constants/appConfig';
 
 const ImageSearchScreen = () => {
@@ -129,8 +128,6 @@ const ImageSearchScreen = () => {
       setLoading(true);
       const searchUrl = `${appConfig.apiUrl}${searchQuery}&page=${currentPage}`;
       const response = await axios.get(searchUrl);
-
-      console.log(response, 'response');
 
       if (response.status === 200) {
         const allPhotos = response.data.photos;
